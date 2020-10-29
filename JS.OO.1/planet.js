@@ -49,8 +49,5 @@ function printPlanetInfo(index){
         divelm.appendChild(planetInfo);
     
 }
-/*
-sunRadio.addEventListener("click", function(){
-    printPlanetInfo(sunRadio.value); 
-})*/
+
 
