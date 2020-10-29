@@ -11,7 +11,7 @@ let validateBtn = document.getElementById("validate");
 
 function ccNumberValidation() {
   let creditcardnumber = document.getElementById("number").value;
-  debugger;
+
   let arr = Array.from(creditcardnumber.toString()).map(Number); //Vi sætter kortnummeret ind i et array
   let removedDigit = arr.splice(-1); //Vi fjerner det sidste nummer
 
@@ -35,7 +35,7 @@ function ccNumberValidation() {
   sum += removedDigit[0]; //vi lægger det fjernede nummer til
 
   console.log(arr, "sum: " + sum);
-  debugger;
+
   if (!(sum % 10 == 0)) {
     isValid.innerHTML = "Credit card isn't valid!";
     isValid.style.color = "red";
@@ -48,4 +48,27 @@ function ccNumberValidation() {
 
 validateBtn.addEventListener("click", ccNumberValidation);
 
-//https://www.dcode.fr/luhn-algorithm
+let cvvValid = document.getElementById("cvvIsValid");
+let visaOrMastercard = /^[0-9]{3}$/; // Ser om den indeholder 3 digits
+let americanExpress = /^[0-9]{4}$/; // Ser om den indeholder 4 digits
+
+// Visa & Mastercard har 3 tal
+// American Express har 4.
+function validateCvv() {
+  let cvvInput = document.getElementById("cvvId").value;
+  debugger;
+  let checkVisaOrMaster = visaOrMastercard.exec(cvvInput);
+  let checkAmerican = americanExpress.exec(cvvInput);
+  debugger;
+  if (cvvInput != checkVisaOrMaster && cvvInput != checkAmerican) {
+    cvvValid.innerHTML = "CVV isn't valid";
+    cvvValid.style.color = "red";
+    return false;
+  } else {
+    cvvValid.innerHTML = "CVV is valid";
+    cvvValid.style.color = "green";
+    return true;
+  }
+}
+
+validateBtn.addEventListener("click", validateCvv);
