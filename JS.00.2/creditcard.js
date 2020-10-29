@@ -6,7 +6,7 @@ class Creditcard {
     this.cvv = cvv;
   }
 }
-
+let isValid = document.getElementById("isValid");
 let validateBtn = document.getElementById("validate");
 
 function ccNumberValidation() {
@@ -36,13 +36,12 @@ function ccNumberValidation() {
 
   console.log(arr, "sum: " + sum);
   debugger;
-  if (sum % 10 == 0) {
-    alert("Credit card is valid!");
-
-    return true; //Kortnummeret er validt
-  } else {
-    alert("Not valid!");
+  if (!(sum % 10 == 0)) {
+    isValid.innerHTML = "Credit card isn't valid!";
+    return false;
   }
+  isValid.innerHTML = "Credit card is valid!";
+  return true; //Kortnummeret er validt
 }
 
 validateBtn.addEventListener("click", ccNumberValidation);
