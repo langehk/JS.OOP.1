@@ -38,9 +38,11 @@ function ccNumberValidation() {
   debugger;
   if (!(sum % 10 == 0)) {
     isValid.innerHTML = "Credit card isn't valid!";
+    isValid.style.color = "red";
     return false;
   }
   isValid.innerHTML = "Credit card is valid!";
+  isValid.style.color = "green";
   return true; //Kortnummeret er validt
 }
 
