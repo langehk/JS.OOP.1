@@ -52,10 +52,7 @@ submit.addEventListener("click", function(){
     let performers = document.getElementById('performers').value;
     let tune = new Tune(title, composer, year, performers); 
     tuneArr.push(tune);
-    tune.performers.push("test");
-    
     divelm.innerHTML = "";
-    
     printTunes(tuneArr);
     debugger;
 });
