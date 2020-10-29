@@ -56,10 +56,10 @@ let americanExpress = /^[0-9]{4}$/; // Ser om den indeholder 4 digits
 // American Express har 4.
 function validateCvv() {
   let cvvInput = document.getElementById("cvvId").value;
-  debugger;
+
   let checkVisaOrMaster = visaOrMastercard.exec(cvvInput);
   let checkAmerican = americanExpress.exec(cvvInput);
-  debugger;
+
   if (cvvInput != checkVisaOrMaster && cvvInput != checkAmerican) {
     cvvValid.innerHTML = "CVV isn't valid";
     cvvValid.style.color = "red";
@@ -71,4 +71,30 @@ function validateCvv() {
   }
 }
 
+
+let isMonthAndYearValid = document.getElementById("isMonthAndYearValid");
+
+function validateExpDate(){
+  let expMonthInput = document.getElementById("month").value;
+  let expYearInput = document.getElementById("year").value;
+  let expDateInput = (expMonthInput + "-" + expYearInput);
+  
+  /*
+  ** Date.getTime()  Denne metode henter antal millisekunder siden 1 januar 1970.
+  Hvor vi sammenligner med første dag i den angivede måned 01-10-22.
+  Med antal millisekunder til nuværende tidspunkt.
+  Hvis den angivede dato er størrere end vores nuværende dato, så er den true.
+*/
+  let isDateValid = (new Date("01-" + expDateInput).getTime() > new Date().getTime()); 
+  if(isDateValid === true){
+    isMonthAndYearValid.innerHTML = "Date is valid!";
+    isMonthAndYearValid.style.color = "green";
+}
+  else{
+    isMonthAndYearValid.innerHTML = "Date isn't valid!";
+    isMonthAndYearValid.style.color = "red";
+  }
+}
+
 validateBtn.addEventListener("click", validateCvv);
+validateBtn.addEventListener("click", validateExpDate);
