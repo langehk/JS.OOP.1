@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="./creditcard.js"></script>
     <title>Creditcard</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div>
-        <form>
-            <label for="number">Creditcard number</label><br>
-            <input type="number" id="number" name="number" value="0000"><br>
+      <form>
+        <label for="number">Creditcard number</label><br />
+        <input type="number" id="number" name="number" value="" /><br />
+        <button id="validate">Validate</button>
+        <p>Expiration date:</p>
+        <label for="text">Month: </label>
+        <input type="number" id="month" name="month" value="00" />
+        <label for="text">Year: </label>
+        <input type="number" id="year" name="year" value="00" />
+        <br /><br />
 
-            <p>Expiration date:</p>
-            <label for="text">Month: </label>
-            <input type="number" id="month" name="month" value="00">
-            <label for="text">Year: </label>
-            <input type="number" id="year" name="year" value="00">
-            <br><br>
-
-            <label for="text">Name</label><br>
-            <input type="text" id="name" name="name" value="name"><br> 
-        </form>    
+        <label for="text">Name</label><br />
+        <input type="text" id="name" name="name" value="name" /><br />
+      </form>
     </div>
-    
-    
-    
-</body>
+  </body>
 </html>
