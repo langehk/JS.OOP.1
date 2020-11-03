@@ -64,7 +64,7 @@ class Rational {
 
 }
 
-let add = function(frac1, frac2){
+let add = function(frac1, frac2){ //Plus to brøker
     let newFrac; 
     let newNum1; 
     let newNum2; 
@@ -82,7 +82,7 @@ let add = function(frac1, frac2){
     return newFrac; 
 }
 
-let sub = function(frac1, frac2){
+let sub = function(frac1, frac2){ //Træk to brøker fra hinanden
     let newFrac; 
     let newNum1; 
     let newNum2; 
@@ -104,4 +104,6 @@ let newRational = new Rational(2,5);
 let newRational1 = new Rational(7,4);
 console.log(sub(newRational, newRational1)); 
 
+
+// https://www.usingmaths.com/junior_secondary/javascript/multiplyfraction.php
 
