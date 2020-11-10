@@ -23,14 +23,14 @@ class Rational {
         }
     }
 
-    invert(){
+    invert(){ //Brøken vendes om
         let tempNumerator = this.numerator; 
         let tempDenominator = this.denominator; 
         this.numerator = tempDenominator; 
         this.denominator = tempNumerator; 
     }
 
-    toString() {
+    toString() { //Brøken skrives, som vi kender det, fx 2/5 
         let fraction;
         if(this.denominator == 1){
             fraction = `${this.numerator}`; 
@@ -47,8 +47,8 @@ class Rational {
         return float; 
     }
 
-    reduce(){
-        if(this.numerator % this.denominator == 0){
+    reduce(){ //Brøken reduceres så meget som muligt
+        if(this.numerator % this.denominator == 0){ //Hvis brøken er et helt tal returneres dette
             this.numerator = this.numerator/this.denominator; 
             return this.numerator; 
         }
@@ -64,17 +64,21 @@ class Rational {
 
 }
 
+/*
+frac1 = den ene brøk (Rational objekt)
+frac2 = den anden brøk (Rational objekt)
+*/
 let add = function(frac1, frac2){ //Plus to brøker
     let newFrac; 
     let newNum1; 
     let newNum2; 
     let newDen; 
 
-    if(frac1.denominator != frac2.denominator){
-        newDen = frac1.denominator * frac2.denominator; 
-        newNum1 = frac1.numerator * frac2.denominator; 
-        newNum2 = frac2.numerator * frac1.denominator; 
-        newFrac= `${newNum1 + newNum2}/${newDen}`; 
+    if(frac1.denominator != frac2.denominator){ //Hvis denominators ikke er det samme
+        newDen = frac1.denominator * frac2.denominator; //For at få denominator til at være det samme i begge brøker
+        newNum1 = frac1.numerator * frac2.denominator; //Vi ganger på kryds
+        newNum2 = frac2.numerator * frac1.denominator; //Vi ganger på kryds
+        newFrac= `${newNum1 + newNum2}/${newDen}`; //Numerators kan lægges til hinanden
         return newFrac; 
     }
 
@@ -82,17 +86,21 @@ let add = function(frac1, frac2){ //Plus to brøker
     return newFrac; 
 }
 
+/*
+frac1 = den ene brøk (Rational objekt)
+frac2 = den anden brøk (Rational objekt)
+*/
 let sub = function(frac1, frac2){ //Træk to brøker fra hinanden
     let newFrac; 
     let newNum1; 
     let newNum2; 
     let newDen; 
 
-    if(frac1.denominator != frac2.denominator){
-        newDen = frac1.denominator * frac2.denominator; 
-        newNum1 = frac1.numerator * frac2.denominator; 
-        newNum2 = frac2.numerator * frac1.denominator; 
-        newFrac= `${Math.abs(newNum1 - newNum2)}/${newDen}`; 
+    if(frac1.denominator != frac2.denominator){ //Hvis denominators ikke er det samme
+        newDen = frac1.denominator * frac2.denominator; //For at få denominator til at være det samme i begge brøker
+        newNum1 = frac1.numerator * frac2.denominator; //Vi ganger på kryds
+        newNum2 = frac2.numerator * frac1.denominator;  //Vi ganger på kryds
+        newFrac= `${Math.abs(newNum1 - newNum2)}/${newDen}`; //Toppen af brøkerne kan trækkes fra hinanden 
         return newFrac; 
     }
 
@@ -100,9 +108,39 @@ let sub = function(frac1, frac2){ //Træk to brøker fra hinanden
     return newFrac; 
 }
 
+/*
+https://www.mathsisfun.com/fractions_multiplication.html
+
+frac1 = den ene brøk (Rational objekt)
+frac2 = den anden brøk (Rational objekt)
+*/
+
+let mul = function(frac1, frac2){ //Gange to brøker
+
+    let mulFrac = new Rational((frac1.numerator * frac2.numerator), (frac1.denominator * frac2.denominator)); 
+    mulFrac.reduce(); //Vi kalder funktionen i objektet for at reducere brøken
+    return mulFrac.toString(); //Vi skriver brøken pænt ud
+
+}
+
+/*
+https://www.mathsisfun.com/fractions_division.html
+
+frac1 = den ene brøk (Rational objekt)
+frac2 = den anden brøk (Rational objekt)
+*/
+
+let div = function(frac1, frac2){
+
+    frac2.invert(); //Vi vender den ene brøk om
+    let dividFrac = mul(frac1, frac2); //Vi kalder vores gange-funktion
+    return dividFrac; 
+
+}
+
 let newRational = new Rational(2,5);
 let newRational1 = new Rational(7,4);
-console.log(sub(newRational, newRational1)); 
+console.log(div(newRational, newRational1)); 
 
 
 // https://www.usingmaths.com/junior_secondary/javascript/multiplyfraction.php
